@@ -5,19 +5,16 @@ let createNewUser = function (firstName, lastName) {
     let user = new Object();
 
     user.getFirstName = function() {
-        this.firstName = firstName; 
+        return this.firstName = firstName; 
     }
     user.getLastName = function() {
-        this.lastName = lastName; 
+        return this.lastName = lastName; 
     }
 
     user.getLogin = function() {
-        user.login = this.firstName.charAt(0).toLowerCase() + this.lastName.toLowerCase();
+        this.login = this.getFirstName().charAt(0).toLowerCase() + this.getLastName().toLowerCase();
+        return this.login;
     }
-
-    user.getFirstName();
-    user.getLastName();
-    user.getLogin();
 
     return user;
 }
@@ -25,5 +22,5 @@ let createNewUser = function (firstName, lastName) {
 let newUser = createNewUser(firstName, lastName);
 let newUser2 = createNewUser('John', 'Smith');
 
-console.log('Your login: ' + newUser.login);
-console.log('Test user: ' + newUser2.login);
+console.log('Your login: ' + newUser.getLogin());
+console.log('Test user: ' + newUser2.getLogin());
